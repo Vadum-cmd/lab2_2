@@ -28,9 +28,7 @@ def prepare_location_title_data(data_file: str='locations.list') -> dict:
         """
         wo_description = location.strip(" \n").split('(')[0]
         if wo_description.count(',') >= 2:
-            return wo_description.translate(
-                str.maketrans('', '', string.punctuation)
-            )
+            return wo_description.translate(str.maketrans('', '', string.punctuation))
         return None
 
     logging.debug(f"Reading {data_file}...")
@@ -79,20 +77,13 @@ def find_closest_locations(current_user_location: str, location_title_dict: dict
                     matching_locations_dict[file_location] = user_tag_num
 
     best_matches = np.array(list(map(
-        lambda x: x[0],
-        sorted(
-            list(matching_locations_dict.items()),
-            key=lambda x: -x[1]
-        )
+        lambda x: x[0], sorted(list(matching_locations_dict.items()),key=lambda x: -x[1])
     )))
 
     return best_matches
 
 
-def generate_html(
-        location, geocode,
-        latitude: float=49.817545, longitude: float=24.023932, html_path="map.html"
-    ):
+def generate_html(location, geocode, latitude: float=49.817545, longitude: float=24.023932, html_path="map.html"):
     """
     This function generatess and html file containing a map with films.
     """
@@ -115,9 +106,7 @@ def generate_html(
             continue
         match_lat, match_lon = match_location.latitude, match_location.longitude
 
-        closest_films_featuregroup.add_child(folium.Marker(
-            location=[match_lat, match_lon],
-            popup=folium.Popup(folium.Html(
+        closest_films_featuregroup.add_child(folium.Marker(location=[match_lat, match_lon], popup=folium.Popup(folium.Html(
                 ", ".join(location_title_dict[match])
             ), min_width=500, max_width=500),
             icon=folium.Icon()
@@ -167,3 +156,7 @@ def main():
     print("Generating the map, please wait...")
     generate_html(location, geocode, latitude=latitude, longitude=longitude, html_path=map_html_name)
     print(f"Your map is saved in: {map_html_name}")
+
+    
+if __name__ == "__main__":
+    main()
