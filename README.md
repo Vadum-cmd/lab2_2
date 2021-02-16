@@ -18,6 +18,8 @@ Then, type the following to install the required packages:
 
 $ pip install -r requirements.txt
 
+(Unfortunately, file "locations.list" is to big for uploading so you'll have to unarchive it)
+
 HOW TO USE:
 To run the app type:
 
