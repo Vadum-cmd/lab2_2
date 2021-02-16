@@ -6,7 +6,7 @@ Takes into account that the movies should be in the same country/region.
 
 WHAT YOU WILL NEED:
 To install this app, you will first need to clone the repository:
-$ git clone https://github.com/misha2956/Closest-films.git
+$ git clone https://github.com/Vadum-cmd/lab2_2.git
 
 Then, setup a virtualenv:
 $ virtualenv -p python3 venv
